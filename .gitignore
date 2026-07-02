@@ -9,5 +9,4 @@ __MACOSX/
 *.log 
 output/ 
 submission.csv 
-submission_metadata.yaml
 data/

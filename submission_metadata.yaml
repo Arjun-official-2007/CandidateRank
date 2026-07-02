@@ -1,0 +1,104 @@
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "EPOCH ZERO"  # Used in leaderboard and announcements
+
+primary_contact:
+  name: "Darshan S"
+  email: "darshans.sys@gmail.com"   # Used for all organizer communication
+  phone: "+91-9600985454"        # Used for top-50 / top-10 outreach
+
+team_members:
+  - name: "Darshan S"
+    email: "darshans.sys@gmail.com" 
+    role: "Architecture & approach design"
+  - name: "Arjun K"
+    email: "arjunkofficial2007@gmail.com"
+    role:  "Engineering — full implementation"          # Optional, e.g. "Team Lead", "Backend", "Data"
+  - name: "Pujita K"
+    email: "pujita008@gmail.com"
+    role: "Documentation, presentation & research"
+  # Add more members as needed; solo participants list just one member
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/Arjun-official-2007/CandidateRank.git"
+# Required. Must be reachable. Private repos OK if you can grant organizer
+# access at Stage 3 (the email to add will be communicated then).
+
+sandbox_link: "https://candidaterank-arjun.streamlit.app/"
+# Required. A working hosted environment where the ranker can be run on a small
+# candidate sample. See Section 10.5 of submission_spec.md for acceptable
+# platforms (HuggingFace Spaces, Streamlit Cloud, Replit, Colab, Docker, Binder).
+
+reproduce_command: "python src/rank.py --candidates data/candidates.jsonl --out output/submission.csv "
+# The single command that produces submission.csv from candidates.jsonl.
+# Should run end-to-end within 5 minutes on CPU with 16GB RAM and no network.
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Windows 11, Intel CPU"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11.1"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0              # Approximate, if applicable
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+# Transparency only — declared use is NOT penalized. Be honest. Stage 5 interview
+# may verify these declarations against your code; declarations that contradict
+# your code or your interview are flagged.
+ai_tools_used:
+  - "Claude"
+  - "Cursor"
+
+ai_usage_summary: |
+  Used Claude for idea brainstorming and architectural discussion — thinking
+  through the honeypot gate design, the multiplicative behavioral model, and
+  the Gaussian experience curve. Used Cursor for autocomplete while writing
+  boilerplate and repetitive code patterns.
+  All core architecture, design decisions, and logic were independently
+  conceived by the team. No candidate data was fed to any external LLM at
+  any point. The ranking pipeline itself contains zero LLM calls — fully
+  rule-based and deterministic.
+# ============================================================================
+# Approach summary (optional but recommended)
+# ============================================================================
+methodology_summary: |
+  Rule-based, fully deterministic ranker. Candidates are streamed one-by-one
+  (constant memory) and hard-gated through a 6-signal honeypot detector
+  requiring 2+ corroborating signals before exclusion — preventing false
+  positives from data-entry noise.
+
+  Clean candidates are scored across four independent dimensions: Career
+  (title tier + keyword depth + consulting/hopper penalties), Skills
+  (must-have/nice-to-have coverage + suspicious-skill exclusion), Experience
+  (Gaussian curve peaked at 7 years + ML-specific years from career
+  descriptions), and Location (hub proximity + notice period). These are
+  combined as a weighted sum (0.30 + 0.20 + 0.15 + 0.10).
+
+  A behavioral availability multiplier [0.2, 1.3] is then applied
+  multiplicatively — ensuring that ghost profiles with excellent paper scores
+  but 5% response rates are collapsed regardless of technical merit.
+
+  Performance: ~97 seconds for 100K candidates on standard CPU. Zero ML
+  models, zero API calls, zero randomness. Same input + same --ref-date =
+  identical output, guaranteed.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true        # I have read submission_spec.md in full
+  code_is_original_work: true       # My code is my team's original work (using AI as a tool is fine)
+  no_collusion: true                # I have not coordinated my submission with other teams
+  honeypot_check_done: false        # OPTIONAL — set true if you explicitly checked for honeypots in your ranking
+  reproduction_tested: true         # I have tested that my reproduce_command runs end-to-end
