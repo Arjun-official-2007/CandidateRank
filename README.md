@@ -4,6 +4,8 @@ Rule-based, 100% deterministic candidate ranking for large-scale ML hiring pipel
 
 Drop in a `candidates.jsonl`, run one command, get a ranked `submission.csv` in under 2 minutes for 100K profiles.
 
+**Live sandbox:** [candidaterank-arjun.streamlit.app](https://candidaterank-arjun.streamlit.app/) — try it on the bundled sample data (≤100 candidates) without installing anything.
+
 ---
 
 ## The Problem
