@@ -165,7 +165,7 @@ with activity 18 days ago. Available with a 45 days notice.
 ### Run
 ```bash
 # Clone and enter the project
-git clone https://github.com/your-org/CandidateRank-AI
+git clone https://github.com/Arjun-official-2007/CandidateRank.git
 cd CandidateRank-AI
 
 # Place candidates data
@@ -302,6 +302,6 @@ CandidateRank-AI/
 
 ## Team
 
-**Antigravity AI**  
-Submission date: 2026-07-01  
+**EPOCHZERO**  
+Submission date: 2026-07-02  
 Reproducibility: 100% deterministic — no randomness anywhere in the pipeline.
