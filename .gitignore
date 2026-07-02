@@ -1,0 +1,11 @@
+__pycache__/ 
+*.pyc 
+.DS_Store 
+__MACOSX/ 
+._[PUB]* 
+*codebase.txt 
+*combined_content*.txt 
+*.log 
+output/ 
+submission.csv 
+submission_metadata.yaml
