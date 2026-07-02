@@ -31,7 +31,7 @@ def parse_job_description(path: str):
         "must_have": [],
         "nice_to_have": [],
         "titles": [],
-        "target_experience": None,
+        "target_experience": None,}
     
 
     # Helper to split comma‑separated lists and normalise whitespace
