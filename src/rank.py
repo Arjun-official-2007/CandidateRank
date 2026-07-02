@@ -140,9 +140,7 @@ def main(candidates_path: str, out_path: str, verbose: bool = False, ref_today: 
     scored.sort(key=lambda x: x[1], reverse=True)
     
     # # min_rows is passed as argument to main
-    top100 = scored[:min_rows]
-    if len(top100) < min_rows:
-        raise ValueError(f"Expected at least {min_rows} candidates, got {len(top100)}")
+    top100 = scored[:min(min_rows, len(scored))]
 
     elapsed = time.time() - t_start
     print(
